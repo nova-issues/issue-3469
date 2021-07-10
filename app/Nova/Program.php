@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -45,6 +46,8 @@ class Program extends Resource
             ID::make(__('ID'), 'id')->sortable(),
 
             Text::make('Name'),
+
+            MorphMany::make('Collectors', 'collectors', Collection::class),
 
             MorphToMany::make('Collections'),
         ];
